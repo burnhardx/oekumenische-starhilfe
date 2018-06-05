@@ -1,0 +1,30 @@
+{
+  "name": "oekumenische-starthilfe",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "dev": "node index.js",
+    "create-user": "node src/server/cli/createSystemUser",
+    "import-refugees": "node src/server/cli/importRefugees"
+  },
+  "author": "Bernhard Vollmer <burn.hard.x@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.2",
+    "mocha": "^5.2.0",
+    "node-xlsx": "^0.12.0",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "prompt": "^1.0.0",
+    "q": "^1.5.1",
+    "qrcode": "^1.2.0",
+    "underscore": "^1.8.3",
+    "sequelize": "^4.37.10"
+  }
+}
