@@ -1,3 +1,4 @@
+
 class Calendar {
     constructor() {
         const comparison = new Date();
@@ -11,8 +12,7 @@ class Calendar {
             return {
                 date: date.getDate(),
                 month: Math.abs(date.getMonth()+1),
-                year: date.getFullYear(),
-                complete: date
+                year: date.getFullYear()
             }
         }
 
@@ -22,7 +22,6 @@ class Calendar {
         let row = [];
 
         const fillRow = (currentRow, day) => {
-            const dummy=day.getDay();
             if (day.getDay() == 1) {
                 return;
             }
@@ -30,6 +29,7 @@ class Calendar {
             let targetMonth = fillBefore ? Math.abs(day.getMonth()) : Math.abs(day.getMonth()+1);
             let date = new Date(day.getFullYear(), targetMonth, fillBefore ? 0 : 1);
             const tillMonday= fillBefore ? Math.abs(7-day.getUTCDay()+1) : Math.abs(7-day.getUTCDay()-1);
+
             for (var j = 0; j < tillMonday; j++) {
                 currentRow.push(createDate(date));
                 date = new Date(day.getFullYear(),Math.abs(targetMonth-1), fillBefore ? Math.abs(date.getDate()-1) : Math.abs(date.getDate()+1));
