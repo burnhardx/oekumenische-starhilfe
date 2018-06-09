@@ -32,5 +32,11 @@ class LocalStorage {
         this.localStorage.removeItem(key);
     }
 
+    allKeys(){
+        if (typeof localStorage === "undefined" || localStorage === null) {
+            return this.localStorage._keys;
+        }
+        return Object.keys(this.localStorage);
+    }
 }
 module.exports = new LocalStorage();

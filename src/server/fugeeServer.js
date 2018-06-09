@@ -12,12 +12,14 @@ const app = express();
 app.use(bodyParser.json());
 module.exports = () => {
     const defer = Q.defer();
+
     startDB().then(db => {
         cache.db = db;
         require("./routes/login")(app);
         require("./routes/refugee")(app);
 
         //require("./routes/html/dashboard/login")(app);
+        const wss = require("./ws/websocket")(Math.abs(port+1))
 
         let server = app.listen(port, () => {
             console.log('Fugee Server started on ' + port);
@@ -25,7 +27,8 @@ module.exports = () => {
             defer.resolve({
                 server: server,
                 app: app,
-                cache: cache
+                cache: cache,
+                wss:wss
             });
         });
     })

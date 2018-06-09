@@ -23,6 +23,7 @@ describe("localStorage", ()=>{
         wrapped.timestamp.should.not.equal('')
         wrapped.transferred.should.equal(false);
         wrapped.value.should.equal(testValues.value);
+
     })
 
     it("stores objects properly",()=>{
@@ -32,6 +33,11 @@ describe("localStorage", ()=>{
         const stored=underTest.get(testValues.key);
         stored.name.should.equal(complexValue.name);
         stored.female.should.equal(complexValue.female)
+    })
+
+    it("can resolve all stored keys",()=>{
+        const allKeys=underTest.allKeys();
+        allKeys.indexOf(testValues.key).should.not.equal(-1);
     })
 
     after(()=>{

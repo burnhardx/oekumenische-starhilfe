@@ -13,6 +13,51 @@ module.exports = sequelize => {
         autoIncrement: true
     };
 
+    const Item = sequelize.define('items', {
+            id: {
+                type: Sequelize.STRING,
+                primaryKey:true
+            },
+            number: {
+                type: Sequelize.INTEGER
+            },
+            title: {
+                type: Sequelize.STRING
+            },
+            description: {
+                type: Sequelize.STRING
+            }
+        }
+    );
+
+    const Event = sequelize.define('events', {
+            id: {
+                type: Sequelize.STRING,
+                primaryKey:true
+            },
+            date: {
+                type: Sequelize.DATEONLY
+            },
+            donor: {
+                type: Sequelize.STRING
+            },
+            street: {
+                type: Sequelize.STRING
+            },
+            plz: {
+                type: Sequelize.INTEGER
+            },
+            city: {
+                type: Sequelize.STRING
+            },
+            begin: {
+                type: Sequelize.STRING
+            }
+        }
+    );
+
+    Event.hasMany(Item, {as:'items'});
+
     return {
         User: sequelize.define('users', {
                 id: id,
@@ -38,7 +83,7 @@ module.exports = sequelize => {
         Refugee: sequelize.define('refugees', {
             id: id,
             number: {
-                type:Sequelize.INTEGER
+                type: Sequelize.INTEGER
             },
             prename: {
                 type: Sequelize.STRING
@@ -50,32 +95,34 @@ module.exports = sequelize => {
                 type: Sequelize.DATEONLY
             },
             female: {
-                type:Sequelize.BOOLEAN,
-                defaultValue:true
+                type: Sequelize.BOOLEAN,
+                defaultValue: true
             },
             adress: {
                 type: Sequelize.STRING
             },
             officialState: {
                 type: Sequelize.ENUM,
-                values:['BÜMA','AE','AG'],
-                notNullValue:true
+                values: ['BÜMA', 'AE', 'AG'],
+                notNullValue: true
             },
             description: {
-                type:Sequelize.STRING
+                type: Sequelize.STRING
             },
-            cardNr:{
-                type:Sequelize.STRING
+            cardNr: {
+                type: Sequelize.STRING
             },
-            cardDate:{
+            cardDate: {
                 type: Sequelize.DATEONLY
             },
-            nation:{
-                type:Sequelize.STRING
+            nation: {
+                type: Sequelize.STRING
             },
-            image:{
-                type:Sequelize.STRING.BINARY
+            image: {
+                type: Sequelize.STRING.BINARY
             }
-        })
+        }),
+        Event: Event,
+        Item: Item
     }
 }
