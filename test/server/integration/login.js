@@ -23,15 +23,12 @@ describe("Login @FugeeServer", () => {
         })
     })
 
-    let token;
-
     it("is possible with known user credentials", ()=> {
         chai.request(app)
             .post('/login')
             .send({login:testUser.login, password:testUser.password})
             .end((err,res)=>{
                 should.exist(res.body.token);
-                token=res.body.token;
             })
     })
 

@@ -12,8 +12,6 @@ module.exports = row=>{
                 emptyIfUndefined(row[8])=='x' ? 'AG' : null;
     }
 
-    const fillZeros= str => {return str.length==1 ? '0'+str : str};
-
     const formatDate = date=>{
         if(date==''){
             return undefined;

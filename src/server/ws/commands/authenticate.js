@@ -15,8 +15,6 @@ module.exports = (authenticateUser, ws) => {
     }
 
     if(process.env.SOCKET_TESTING=="true"){
-        console.log('Schicke folgendes')
-        console.log(answerWithToken({dataValues:{name:'Heribert'}}))
         ws.send(JSON.stringify(answerWithToken({dataValues:{name:'Heribert'}})))
     }else{
         model(cache.db).User.findOne({where: {login: authenticateUser.login}}).then(user => {

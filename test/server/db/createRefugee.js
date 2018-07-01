@@ -1,9 +1,10 @@
 const should = require("chai").should();
 const underTest = require("./../../../src/server/db/createRefugee");
 
-const startDB = require("./../../../src/server/db/startDB")
 const models = require("./../../../src/server/db/model")
 const cache = require("./../../../src/server/cache");
+
+require("./../startFugeeTestSystem");
 
 describe("createRefugee.js", () => {
 
@@ -21,12 +22,6 @@ describe("createRefugee.js", () => {
         nation: 'USA'
     };
 
-    before(done => {
-        startDB().then(started => {
-            cache.db = started;
-            done();
-        })
-    })
 
     it("writes given refugee data to db", done => {
 
@@ -46,8 +41,5 @@ describe("createRefugee.js", () => {
 
     })
 
-    after(() => {
-        cache.db.close();
-    })
 
 })

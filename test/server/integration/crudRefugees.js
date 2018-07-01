@@ -34,18 +34,6 @@ describe("Managing refugees @FugeeServer", () => {
         })
     })
 
-    it("retrieves all stored refugees", done=> {
-
-        models(db).Refugee.findAll({}).then(allRefugees=>{
-            chai.request(app)
-                .get('/data/'+token+'/refugees')
-                .end((err,res)=>{
-                    should.exist(res.body.data);
-                    res.body.data.length.should.equal(allRefugees.length);
-                    done();
-                })
-        })
-    })
 
     const sampleRefugees = [{
         number: 666,
@@ -92,6 +80,19 @@ describe("Managing refugees @FugeeServer", () => {
                         done();
                     })
             })
+    })
+
+    it("retrieves all stored refugees", done=> {
+
+        models(db).Refugee.findAll({}).then(allRefugees=>{
+            chai.request(app)
+                .get('/data/'+token+'/refugees')
+                .end((err,res)=>{
+                    should.exist(res.body.data);
+                    res.body.data.length.should.equal(allRefugees.length);
+                    done();
+                })
+        })
     })
 
     it("can read refugees by id", done=>{

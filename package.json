@@ -6,9 +6,10 @@
   "scripts": {
     "test": "mocha --recursive",
     "dev": "node index.js",
+    "test-dom" : "mocha --recursive -r jsdom-global/register test/dom",
     "create-user": "node src/server/cli/createSystemUser",
     "import-refugees": "node src/server/cli/importRefugees",
-    "build-mobile-volunteer": "browserify src/mobile-volunteer/js/checkBundle.js -t [ babelify --presets [ es2015 ] ] > src/server/public/mobile-volunteer.js"
+    "build-mobile-volunteer": "browserify src/mobile-volunteer/client/client.js -t [ babelify --presets [ es2015 ] ] > src/server/public/mobile-volunteer.js"
   },
   "author": "Bernhard Vollmer <burn.hard.x@gmail.com>",
   "license": "MIT",

@@ -5,8 +5,6 @@
 const crypto = require('crypto');
 const config = require("./../config");
 
-const saltLength = 16;
-
 /**
  * hash password with sha512.
  * @function

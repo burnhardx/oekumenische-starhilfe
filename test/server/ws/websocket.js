@@ -38,8 +38,6 @@ describe("Websocket Communication", ()=>{
                 ws.send(JSON.stringify(query))
             }
             if(answer.is(commands.QueryDB)){
-                answer.payloadAsObject().result.length.should.not.equal(0);
-                console.log(answer.payloadAsObject().result.length);
                 done();
             }
         });
