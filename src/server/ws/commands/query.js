@@ -2,7 +2,6 @@ const cache = require("./../../cache");
 const model = require("./../../db/model");
 const Socket = require("./../socketMessage");
 const commands = require("./../commands");
-const Query = require("./../messages/query")
 
 module.exports = (query,ws,token)=>{
 
